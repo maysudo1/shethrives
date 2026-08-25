@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+
+<html lang="sr">
+<head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&amp;family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&amp;family=DM+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --white:#FFFFFF;
+  --off-white:#F7F9FC;
+  --blue:#1A3A6E;
+  --blue-deep:#112750;
+  --blue-mid:#2A5298;
+  --blue-pale:rgba(26,58,110,0.06);
+  --gold:#C9A23E;
+  --gold-dark:#A07C1E;
+  --gold-light:#E8C97A;
+  --gold-pale:rgba(201,162,62,0.12);
+  --red:#BF3028;
+  --red-dark:#982620;
+  --text:#0F1B2D;
+  --text-mid:#4E5F72;
+  --text-dim:#8A9BAB;
+  --border:#DDE4EE;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --cinzel:'Cinzel','Trajan Pro',Georgia,serif;
+  --sans:'DM Sans',system-ui,sans-serif;
+  --r:10px;--r-sm:6px;
+}
+html{scroll-behavior:smooth}
+body{background:var(--white);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased}
+
+/* ── LAYOUT ── */
+.wrap{max-width:1020px;margin:0 auto;padding:0 28px}
+.wrap-narrow{max-width:680px;margin:0 auto;padding:0 28px}
+
+/* ── ORNAMENT DIVIDER ── */
+.ornament{display:flex;align-items:center;justify-content:center;gap:0;margin:0;height:28px;overflow:hidden}
+.ornament::before,.ornament::after{content:'';flex:1;height:1px;background:var(--gold-light)}
+.ornament-diamond{width:8px;height:8px;background:var(--gold);transform:rotate(45deg);flex-shrink:0;margin:0 14px}
+
+/* ── NAV ── */
+nav{background:var(--white);border-bottom:1px solid var(--border);padding:0;position:sticky;top:0;z-index:100}
+.nav-band{background:var(--blue);height:4px}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:10px 0}
+.nav-logo{display:flex;align-items:center;gap:16px;text-decoration:none}
+.nav-logo svg{height:42px;width:auto;flex-shrink:0}
+.nav-logo-text{line-height:1.2}
+.nav-logo-name{font-family:var(--cinzel);font-size:28px;font-style:normal;font-weight:600;color:var(--blue);display:block;letter-spacing:0.08em;-webkit-font-smoothing:antialiased}
+.nav-logo-sub{font-family:var(--cinzel);font-size:11px;font-weight:500;letter-spacing:0.32em;text-transform:uppercase;color:var(--gold);display:block;margin-top:5px;-webkit-font-smoothing:antialiased}
+.btn-red{background:var(--red);color:#fff;font-family:var(--sans);font-size:14px;font-weight:500;padding:11px 24px;border-radius:4px;border:none;cursor:pointer;text-decoration:none;display:inline-block;transition:background 0.18s,transform 0.18s;letter-spacing:0.01em}
+.btn-red:hover{background:var(--red-dark);transform:translateY(-1px)}
+.btn-red-lg{background:var(--red);color:#fff;font-family:var(--sans);font-size:16px;font-weight:500;padding:15px 36px;border-radius:4px;border:none;cursor:pointer;text-decoration:none;display:inline-block;transition:background 0.18s,transform 0.18s,box-shadow 0.18s;letter-spacing:0.01em}
+.btn-red-lg:hover{background:var(--red-dark);transform:translateY(-1px);box-shadow:0 6px 20px rgba(191,48,40,0.3)}
+.btn-outline-gold{background:transparent;color:var(--gold-light);font-family:var(--sans);font-size:15px;font-weight:500;padding:13px 32px;border-radius:4px;border:1.5px solid var(--gold);cursor:pointer;text-decoration:none;display:inline-block;transition:all 0.18s;letter-spacing:0.01em}
+.btn-outline-gold:hover{background:var(--gold-pale);border-color:var(--gold-light)}
+.btn-outline-blue{background:transparent;color:var(--blue);font-family:var(--sans);font-size:14px;font-weight:500;padding:11px 22px;border-radius:4px;border:1.5px solid var(--blue);cursor:pointer;text-decoration:none;display:inline-block;transition:all 0.18s}
+.btn-outline-blue:hover{background:var(--blue-pale)}
+
+/* ── HERO ── */
+.hero{background:var(--white);padding:0 0 80px}
+.hero-banner{background:var(--blue);padding:56px 0 52px;position:relative;overflow:hidden}
+.hero-banner::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,rgba(201,162,62,0.04) 0px,rgba(201,162,62,0.04) 1px,transparent 1px,transparent 40px);pointer-events:none}
+.hero-banner::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);pointer-events:none}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--cinzel);font-size:10px;font-weight:400;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold-light);margin-bottom:24px}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';width:28px;height:1px;background:var(--gold)}
+.hero-banner h1{font-family:var(--serif);font-size:clamp(36px,5.5vw,68px);font-weight:300;line-height:1.1;color:#fff;margin-bottom:20px;max-width:720px}
+.hero-banner h1 em{font-style:italic;color:var(--gold-light)}
+.hero-banner .sub{font-size:17px;color:rgba(255,255,255,0.75);max-width:500px;line-height:1.7;font-weight:300;margin-bottom:36px}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.hero-note{font-size:13px;color:rgba(255,255,255,0.5);margin-top:16px}
+.hero-stats{background:var(--white);border-bottom:3px solid var(--gold);padding:0}
+.stats-inner{display:grid;grid-template-columns:repeat(3,1fr);border-left:1px solid var(--border)}
+.stat-block{padding:28px 32px;border-right:1px solid var(--border)}
+.stat-number{font-family:var(--serif);font-size:36px;font-weight:400;color:var(--blue);line-height:1;margin-bottom:4px}
+.stat-label{font-family:var(--cinzel);font-size:11px;color:var(--text-mid);font-weight:400;letter-spacing:0.06em}
+
+/* ── SECTION SHARED ── */
+section{padding:80px 0}
+.s-label{font-family:var(--cinzel);font-size:10px;font-weight:400;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.s-label::before{content:'';width:20px;height:1px;background:var(--gold)}
+.s-title{font-family:var(--serif);font-size:clamp(28px,4vw,46px);font-weight:400;line-height:1.18;color:var(--blue);margin-bottom:14px}
+.s-title em{font-style:italic;color:var(--gold-dark)}
+.s-body{font-size:16px;color:var(--text-mid);line-height:1.75;font-weight:300}
+
+/* ── PAIN — dark blue banner section ── */
+.pain-section{background:var(--blue);padding:80px 0;position:relative;overflow:hidden}
+.pain-section::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,rgba(201,162,62,0.03) 0px,rgba(201,162,62,0.03) 1px,transparent 1px,transparent 40px)}
+.pain-section .ornament::before,.pain-section .ornament::after{background:rgba(201,162,62,0.4)}
+.pain-header{text-align:center;margin-bottom:52px}
+.pain-section .s-label{color:var(--gold-light);justify-content:center}
+.pain-section .s-label::before{display:none}
+.pain-section .s-title{color:#fff}
+.pain-section .s-title em{color:var(--gold-light)}
+.pain-section .s-body{color:rgba(255,255,255,0.68);max-width:480px;margin:0 auto}
+.pain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.pain-card{background:rgba(255,255,255,0.06);border:1px solid rgba(201,162,62,0.25);border-radius:var(--r);padding:28px 24px;backdrop-filter:blur(4px)}
+.pain-card .pain-num{font-family:var(--cinzel);font-size:10px;font-style:normal;color:var(--gold);margin-bottom:12px;display:block;letter-spacing:0.2em;text-transform:uppercase}
+.pain-card h3{font-family:var(--serif);font-size:20px;font-weight:400;color:#fff;margin-bottom:10px;line-height:1.3}
+.pain-card p{font-size:14px;color:rgba(255,255,255,0.62);line-height:1.65;font-weight:300}
+.pain-footer-strip{background:var(--gold);padding:20px 0;text-align:center}
+.pain-footer-strip p{font-family:var(--serif);font-size:18px;font-style:italic;color:var(--blue-deep)}
+
+/* ── HOW IT WORKS ── */
+.works-section{background:var(--white)}
+.works-header{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;margin-bottom:56px}
+.weeks-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.week-card{border:1px solid var(--border);border-radius:var(--r);padding:24px;background:var(--white);transition:border-color 0.2s,box-shadow 0.2s}
+.week-card:hover{border-color:var(--gold-light);box-shadow:0 4px 20px rgba(201,162,62,0.1)}
+.week-card-num{font-family:var(--cinzel);font-size:10px;font-weight:400;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.week-card-num::after{content:'';flex:1;height:1px;background:var(--gold-light);opacity:0.5}
+.week-card h3{font-family:var(--serif);font-size:20px;font-weight:500;color:var(--blue);margin-bottom:6px;line-height:1.25}
+.week-card p{font-size:13px;color:var(--text-mid);line-height:1.6;font-weight:300}
+
+/* ── WHAT YOU GET ── */
+.gets-section{background:var(--off-white);border-top:3px solid var(--gold);border-bottom:1px solid var(--border)}
+.gets-inner{display:grid;grid-template-columns:1fr 1.4fr;gap:56px;align-items:start}
+.gets-grid{display:flex;flex-direction:column;gap:10px;margin-top:8px}
+.get-item{background:var(--white);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:0 var(--r-sm) var(--r-sm) 0;padding:16px 20px;display:flex;gap:14px;align-items:flex-start}
+.get-item h4{font-size:14px;font-weight:600;color:var(--blue);margin-bottom:2px}
+.get-item p{font-size:13px;color:var(--text-mid);line-height:1.55;font-weight:300}
+
+/* ── PRICING ── */
+.pricing-section{background:var(--white)}
+.pricing-header{text-align:center;margin-bottom:52px}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
+.pricing-card{padding:32px 28px;border-right:1px solid var(--border);background:var(--white)}
+.pricing-card:last-child{border-right:none}
+.pricing-card.featured{background:var(--blue);position:relative}
+.featured-badge{background:var(--gold);color:var(--blue-deep);font-family:var(--cinzel);font-size:9px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;padding:6px 16px;display:inline-block;margin-bottom:20px;border-radius:2px}
+.pricing-tier{font-family:var(--cinzel);font-size:10px;font-weight:400;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:block}
+.pricing-card.featured .pricing-tier{color:var(--gold-light)}
+.pricing-price{font-family:var(--serif);font-size:52px;font-weight:300;color:var(--blue);line-height:1;margin-bottom:4px}
+.pricing-card.featured .pricing-price{color:#fff}
+.pricing-price span{font-size:24px;vertical-align:super;font-size:20px;margin-right:2px}
+.pricing-period{font-size:13px;color:var(--text-dim);margin-bottom:20px;border-bottom:1px solid var(--border);padding-bottom:20px}
+.pricing-card.featured .pricing-period{color:rgba(255,255,255,0.5);border-color:rgba(255,255,255,0.15)}
+.pricing-features{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:28px}
+.pricing-features li{font-size:14px;color:var(--text-mid);display:flex;gap:10px;align-items:flex-start;font-weight:300;line-height:1.5}
+.pricing-card.featured .pricing-features li{color:rgba(255,255,255,0.72)}
+.pricing-features li::before{content:'';width:5px;height:5px;background:var(--gold);border-radius:50%;flex-shrink:0;margin-top:8px}
+.pricing-card .btn-red,.pricing-card .btn-red-lg{width:100%;text-align:center;display:block;padding:13px}
+.pricing-card .btn-outline-blue{width:100%;text-align:center;display:block}
+
+/* ── ABOUT ── */
+.about-section{background:var(--blue);padding:80px 0;position:relative;overflow:hidden}
+.about-section::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,rgba(201,162,62,0.03) 0px,rgba(201,162,62,0.03) 1px,transparent 1px,transparent 40px)}
+.about-inner{display:grid;grid-template-columns:1fr;gap:0;align-items:center;position:relative;z-index:1;max-width:680px}
+.about-portrait{border:2px solid var(--gold);border-radius:var(--r);aspect-ratio:4/5;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.05);position:relative;overflow:hidden}
+.about-portrait::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--gold)}
+.about-portrait p{font-family:var(--serif);font-style:italic;font-size:15px;color:rgba(255,255,255,0.4);text-align:center;padding:24px}
+.about-section .s-label{color:var(--gold-light)}
+.about-section .s-label::before{background:var(--gold)}
+.about-section .s-title{color:#fff}
+.about-section .s-title em{color:var(--gold-light)}
+.about-section .s-body{color:rgba(255,255,255,0.7);margin-bottom:16px}
+.creds-list{display:flex;flex-direction:column;gap:8px;margin-top:24px}
+.cred-item{background:rgba(255,255,255,0.07);border:1px solid rgba(201,162,62,0.25);border-radius:var(--r-sm);padding:11px 16px;font-size:14px;color:rgba(255,255,255,0.75);font-weight:300;display:flex;align-items:center;gap:10px}
+.cred-dot{width:6px;height:6px;background:var(--gold);border-radius:50%;flex-shrink:0}
+
+/* ── TESTIMONIAL ── */
+.testimonial-section{background:var(--off-white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:64px 0;text-align:center}
+.t-stars{display:flex;justify-content:center;gap:4px;margin-bottom:20px}
+.t-star{color:var(--gold);font-size:20px}
+.t-quote{font-family:var(--serif);font-size:clamp(20px,3vw,30px);font-style:italic;font-weight:300;color:var(--blue);line-height:1.5;max-width:640px;margin:0 auto 18px}
+.t-attr{font-size:13px;color:var(--text-dim);letter-spacing:0.05em}
+
+/* ── CTA BANNER ── */
+.cta-section{background:var(--blue);padding:80px 0;text-align:center;position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold)}
+.cta-section::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--gold)}
+.cta-section .s-label{color:var(--gold-light);justify-content:center}
+.cta-section .s-label::before{display:none}
+.cta-section .s-title{color:#fff;margin-bottom:12px}
+.cta-section .s-body{color:rgba(255,255,255,0.68);max-width:440px;margin:0 auto 40px}
+.cta-note{color:rgba(255,255,255,0.45);font-size:13px;margin-top:18px}
+
+/* ── FOOTER ── */
+footer{background:var(--blue-deep);border-top:3px solid var(--gold);padding:36px 0;text-align:center}
+footer p{font-size:13px;color:rgba(255,255,255,0.45);font-weight:300}
+footer a{color:var(--gold-light);text-decoration:none}
+.footer-logo{font-family:var(--serif);font-size:20px;font-style:italic;color:rgba(255,255,255,0.8);margin-bottom:12px}
+.footer-logo span{color:var(--gold)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:820px){
+  .pain-grid{grid-template-columns:1fr}
+  .pricing-grid{grid-template-columns:1fr;border-radius:var(--r)}
+  .pricing-card{border-right:none;border-bottom:1px solid var(--border)}
+  .pricing-card:last-child{border-bottom:none}
+  .gets-inner{grid-template-columns:1fr}
+  .about-inner{grid-template-columns:1fr}
+  .works-header{grid-template-columns:1fr}
+  .weeks-grid{grid-template-columns:1fr}
+  .stats-inner{grid-template-columns:1fr}
+  .stat-block{border-right:none;border-bottom:1px solid var(--border);padding:20px 24px}
+  section{padding:60px 0}
+}
+@media(max-width:480px){
+  .wrap,.wrap-narrow{padding:0 18px}
+  .hero-btns{flex-direction:column}
+  .btn-red-lg,.btn-outline-gold{width:100%;text-align:center}
+}
+
+/* ── FADE IN ── */
+@media(prefers-reduced-motion:no-preference){
+  .fi{opacity:0;transform:translateY(16px);transition:opacity 0.55s ease,transform 0.55s ease}
+  .fi.on{opacity:1;transform:none}
+}
+
+.lang-switcher{display:flex;align-items:center;gap:3px;margin-left:14px;border:1px solid var(--border);border-radius:999px;padding:3px;background:var(--white)}
+.lang-btn{border:0;background:transparent;color:var(--text-mid);font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.04em;padding:6px 9px;border-radius:999px;cursor:pointer;transition:all .18s}
+.lang-btn.active{background:var(--blue);color:#fff}.lang-btn:hover:not(.active){background:var(--blue-pale);color:var(--blue)}
+@media(max-width:480px){.nav-inner{gap:8px}.lang-switcher{margin-left:0}.lang-btn{padding:6px 7px}.nav-logo-text{display:none}.nav-logo img{height:52px!important}}
+</style>
+<style>.faq-grid{display:grid;gap:14px;max-width:900px;margin-top:28px}.faq-item{border:1px solid var(--border);border-radius:var(--r);padding:18px 22px;background:var(--white)}.faq-item summary{cursor:pointer;font-weight:600;color:var(--blue);font-size:1.05rem}.faq-item p{margin-top:12px}</style><title>Koučing za odnose i brak za žene | She Thrives Coaching</title><meta content="1-na-1 koučing za odnose i brak za žene koje se osećaju udaljeno, neshvaćeno ili zaglavljeno u braku. Strukturisan šestonedeljni online program fokusiran na komunikaciju, povezanost, granice i jasnoću." name="description"/><meta content="Mariana — She Thrives Coaching" name="author"/><meta content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" name="robots"/><meta content="#1A3A6E" name="theme-color"/><link href="https://shethrivescoach.com/sr/" rel="canonical"/><link href="https://shethrivescoach.com/" hreflang="en" rel="alternate"/><link href="https://shethrivescoach.com/sr/" hreflang="sr" rel="alternate"/><link href="https://shethrivescoach.com/" hreflang="x-default" rel="alternate"/><link href="/assets/favicon.png" rel="icon" type="image/png"/><meta content="website" property="og:type"/><meta content="She Thrives Coaching" property="og:site_name"/><meta content="Koučing za odnose i brak za žene | She Thrives Coaching" property="og:title"/><meta content="1-na-1 koučing za odnose i brak za žene koje se osećaju udaljeno, neshvaćeno ili zaglavljeno u braku. Strukturisan šestonedeljni online program fokusiran na komunikaciju, povezanost, granice i jasnoću." property="og:description"/><meta content="https://shethrivescoach.com/sr/" property="og:url"/><meta content="https://shethrivescoach.com/assets/og-image.jpg" property="og:image"/><meta content="sr_RS" property="og:locale"/><meta content="en_GB" property="og:locale:alternate"/><meta content="summary_large_image" name="twitter:card"/><meta content="Koučing za odnose i brak za žene | She Thrives Coaching" name="twitter:title"/><meta content="1-na-1 koučing za odnose i brak za žene koje se osećaju udaljeno, neshvaćeno ili zaglavljeno u braku. Strukturisan šestonedeljni online program fokusiran na komunikaciju, povezanost, granice i jasnoću." name="twitter:description"/><meta content="https://shethrivescoach.com/assets/og-image.jpg" name="twitter:image"/><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://shethrivescoach.com/sr/#organization",
+      "name": "She Thrives Coaching",
+      "url": "https://shethrivescoach.com/",
+      "description": "Online koučing za odnose i brak za žene.",
+      "founder": {
+        "@id": "https://shethrivescoach.com/sr/#mariana"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://shethrivescoach.com/sr/#website",
+      "url": "https://shethrivescoach.com/sr/",
+      "name": "She Thrives Coaching",
+      "inLanguage": "sr",
+      "publisher": {
+        "@id": "https://shethrivescoach.com/sr/#organization"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://shethrivescoach.com/sr/#mariana",
+      "name": "Mariana",
+      "worksFor": {
+        "@id": "https://shethrivescoach.com/sr/#organization"
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://shethrivescoach.com/sr/#service",
+      "name": "Koučing za odnose i brak",
+      "serviceType": "Koučing za odnose i brak",
+      "provider": {
+        "@id": "https://shethrivescoach.com/sr/#organization"
+      },
+      "areaServed": "Worldwide",
+      "url": "https://shethrivescoach.com/sr/"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://shethrivescoach.com/sr/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Šta je koučing za odnose?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Koučing za odnose pomaže vam da razumete obrasce u odnosu, jasnije komunicirate, prepoznate svoje potrebe i granice i odlučite šta želite dalje."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Da li mogu da radim koučing ako moj suprug ne učestvuje?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Da. She Thrives je 1:1 program za žene. Fokus je na onome što vi možete da razumete, saopštite, promenite i izaberete."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Da li je koučing za odnose isto što i partnerska terapija?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ne. Koučing i terapija su različite usluge. She Thrives se fokusira na koučing, refleksiju, komunikaciju, obrasce odnosa, granice i svesno delovanje."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Šta se dešava tokom šestonedeljnog programa?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Svaka nedelja se fokusira na drugi deo odnosa — od razumevanja obrazaca i komunikacije do konflikta, povezanosti, granica, vizije i završne mape odnosa."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Koliko program košta?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Foundation je $497, Engine je $797, a Operator je $1,197."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Da li se program odvija online?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Da. Sesije su privatne i održavaju se online."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Kako da znam koji plan je pravi za mene?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Besplatan 30-minutni clarity call služi da zajedno procenimo da li je program odgovarajući i koji nivo podrške vam najviše odgovara."
+          }
+        }
+      ]
+    }
+  ]
+}</script><style>.section{padding:80px 0}.eyebrow{font-family:var(--cinzel);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:block}.section .s-title{margin-bottom:16px}.section .s-body{max-width:760px}.faq-grid{display:grid;gap:14px;max-width:900px;margin-top:28px}.faq-item{border:1px solid var(--border);border-radius:var(--r);padding:18px 22px;background:var(--white)}.faq-item summary{cursor:pointer;font-weight:600;color:var(--blue);font-size:1.05rem}.faq-item p{margin-top:12px}.lang-switcher{display:flex;align-items:center;gap:3px;margin-left:14px;border:1px solid var(--border);border-radius:999px;padding:3px;background:var(--white)}.lang-btn{border:0;background:transparent;color:var(--text-mid);font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.04em;padding:6px 9px;border-radius:999px;cursor:pointer;transition:all .18s;text-decoration:none}.lang-btn.active{background:var(--blue);color:#fff}.lang-btn:hover:not(.active){background:var(--blue-pale);color:var(--blue)}@media(max-width:480px){.lang-switcher{margin-left:0}.lang-btn{padding:6px 7px}}</style></head>
+<body>
+<nav>
+<div class="nav-band"></div>
+<div class="wrap">
+<div class="nav-inner">
+<a class="nav-logo" href="../">
+<img alt="She Thrives Coaching lotus" src="../assets/she-thrives-logo.png" style="height:100px;width:auto;display:block;image-rendering:-webkit-optimize-contrast;image-rendering:crisp-edges"/>
+<div class="nav-logo-text">
+<span class="nav-logo-name">She Thrives</span>
+<span class="nav-logo-sub">Koučing</span>
+</div>
+</a>
+<div aria-label="Language" class="lang-switcher" role="group"><a aria-label="Prebacite na engleski" class="lang-btn" href="../" hreflang="en">EN</a><a aria-label="Prebacite na srpski" class="lang-btn active" href="./" hreflang="sr">SR</a></div><a class="btn-red" href="https://calendly.com/coachingshethrives" rel="noopener noreferrer" target="_blank">Zakažite besplatan uvodni razgovor</a>
+</div>
+</div>
+</nav>
+<section class="hero" style="padding:0 0 0">
+<div class="hero-banner">
+<div class="wrap">
+<div class="hero-eyebrow">Relationship &amp; Marriage Coaching</div>
+<h1>Zaslužujete brak koji se zaista oseća kao <em>dom.</em></h1>
+<p class="sub">Šestonedeljni 1-na-1 koučing program za žene koje se osećaju udaljeno, neshvaćeno ili zaglavljeno u svom braku — i spremne su za stvarnu, trajnu promenu.</p>
+<div class="hero-btns">
+<a class="btn-red-lg" href="https://calendly.com/coachingshethrives" rel="noopener noreferrer" target="_blank">Zakažite besplatan uvodni razgovor</a>
+<a class="btn-outline-gold" href="#program">Pogledajte program</a>
+</div>
+<p class="hero-note">30 minuta · Bez obaveza · Potpuno besplatno</p>
+</div>
+</div>
+<div style="background:var(--white);padding:0">
+<div class="ornament" style="background:var(--white)">
+<div class="ornament-diamond"></div>
+</div>
+</div>
+<div class="hero-stats">
+<div class="wrap">
+<div class="stats-inner">
+<div class="stat-block fi">
+<div class="stat-number">6</div>
+<div class="stat-label">Weeks to clarity &amp; a personal roadmap</div>
+</div>
+<div class="stat-block fi">
+<div class="stat-number">1:1</div>
+<div class="stat-label">Private sessions — just you, no group settings</div>
+</div>
+<div class="stat-block fi">
+<div class="stat-number">100%</div>
+<div class="stat-label">Online, confidential, and completely private</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="pain-section">
+<div class="wrap">
+<div class="pain-header fi">
+<span class="s-label">Da li vam ovo zvuči poznato?</span>
+<h2 class="s-title">Nije da ste prestali da se volite. Prestali ste da osećate tu bliskost.</h2>
+<p class="s-body">Niste ovde zato što ste odustali. Ovde ste zato što niste — i znate da nešto mora da se promeni.</p>
+</div>
+<div class="pain-grid">
+<div class="pain-card fi">
+<span class="pain-num">01 · Komunikacija</span>
+<h3>„Svaki razgovor se završi na isti način“</h3>
+<p>Počnete razgovor o stvarnom problemu, a završite u istoj raspravi koju ste vodili već bezbroj puta. Oboje ste iscrpljeni — a ništa se zapravo ne reši.</p>
+</div>
+<div class="pain-card fi">
+<span class="pain-num">02 · Povezanost</span>
+<h3>„Osećam se nevidljivo u sopstvenom braku“</h3>
+<p>Vaše potrebe, osećanja i pogled na stvari — kao da nestaju. Počeli ste da potiskujete sebe samo da biste sačuvali mir. Polako ste prestali da prepoznajete sebe.</p>
+</div>
+<div class="pain-card fi">
+<span class="pain-num">03 · Intimnost</span>
+<h3>„Usamljena sam — čak i kada smo zajedno“</h3>
+<p>Delite dom, možda decu i zajednički život. Ali između vas postoji tiha udaljenost koja nikako da nestane. Nedostaje vam i ne znate više kako da mu priđete.</p>
+</div>
+</div>
+</div>
+<div class="pain-footer-strip" style="margin-top:52px">
+<div class="wrap">
+<p>„Zaslužujete da se osećate voljeno, saslušano i istinski podržano — ne samo u teoriji, već u svom svakodnevnom životu.“</p>
+</div>
+</div>
+</section>
+<section class="works-section" id="program">
+<div class="wrap">
+<div class="works-header">
+<div class="fi">
+<span class="s-label">Šestonedeljni program</span>
+<h2 class="s-title">Šest nedelja. Praktični alati. Brak koji se oseća kao partnerstvo.</h2>
+</div>
+<div class="fi">
+<p class="s-body" style="margin-bottom:20px">Svaka nedelja nadovezuje se na prethodnu. Posle svake sesije imaćete nešto konkretno — ne samo uvid, već sledeći korak koji zaista možete da napravite.</p>
+<p class="s-body">Sesije se održavaju preko Google Meet-a ili platforme koju preferirate, jednom nedeljno po 60 minuta, u terminu koji odgovara vašoj vremenskoj zoni.</p>
+</div>
+</div>
+<div class="weeks-grid">
+<div class="week-card fi">
+<div class="week-card-num">Week one</div>
+<h3>Ko ste vi u ovom braku</h3>
+<p>Počinjemo od vas — vaših potreba, obrazaca i neizgovorenih očekivanja. Pre nego što promenimo dinamiku, potrebno je da razumemo šta vi unosite u taj odnos.</p>
+</div>
+<div class="week-card fi">
+<div class="week-card-num">Week two</div>
+<h3>Pronalazak vašeg glasa</h3>
+<p>Šta vam je zaista potrebno u ovom odnosu? Gradimo način da to izrazite jasno, smireno i bez gubljenja sebe u tom procesu.</p>
+</div>
+<div class="week-card fi">
+<div class="week-card-num">Week three</div>
+<h3>O čemu je sukob zapravo</h3>
+<p>Svađe retko govore samo o onome što se vidi na površini. Otkrivamo potrebe, strahove i obrasce koji pokreću vaše najteže dinamike.</p>
+</div>
+<div class="week-card fi">
+<div class="week-card-num">Week four</div>
+<h3>Obnova povezanosti i poverenja</h3>
+<p>Bilo da je poverenje narušeno ili se tiho izgubilo, ove nedelje radimo na obnovi iskrene emocionalne bliskosti — one koja brak ponovo čini pravim partnerstvom.</p>
+</div>
+<div class="week-card fi">
+<div class="week-card-num">Week five</div>
+<h3>Vaš glas, vaše granice, vaša vizija</h3>
+<p>Šta zaista želite od ovog braka? Ne ono što mislite da bi trebalo da želite — već ono što vam je iskreno potrebno. Razjašnjavamo to i pronalazimo način da to komunicirate.</p>
+</div>
+<div class="week-card fi">
+<div class="week-card-num">Week six</div>
+<h3>Vaš plan za odnos</h3>
+<p>Sve se povezuje — vaši obrasci, potrebe, stvari preko kojih ne želite da pređete i naredni koraci. Dobićete jasan pisani vodič za odnos koji želite da izgradite.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="gets-section">
+<div class="wrap">
+<div class="gets-inner">
+<div class="fi">
+<span class="s-label">Šta je uključeno</span>
+<h2 class="s-title">Sve što vam je potrebno. Ništa suvišno.</h2>
+<p class="s-body" style="margin-top:8px">Podrška je deo svakog segmenta programa — tokom sesija i između njih.</p>
+<div style="margin-top:32px">
+<a class="btn-red" href="https://calendly.com/coachingshethrives" rel="noopener noreferrer" target="_blank">Zakažite besplatan uvodni razgovor</a>
+</div>
+</div>
+<div class="gets-grid fi">
+<div class="get-item">
+<div><h4>6 × 60-minutnih privatnih koučing sesija</h4><p>Preko Google Meet-a ili platforme koju preferirate, jednom nedeljno — potpuno poverljivo i u terminu koji vam odgovara.</p></div>
+</div>
+<div class="get-item">
+<div><h4>Personalizovane vežbe za refleksiju</h4><p>Pitanja za razmišljanje i vežbe vođenja dnevnika između sesija, prilagođene vašoj konkretnoj dinamici odnosa i temama koje se pojave tokom sesije.</p></div>
+</div>
+<div class="get-item">
+<div><h4>Provere putem glasovnih poruka između sesija</h4><p>Niste sami između razgovora. Podrška tokom nedelje kako ne biste izgubili zamah kada stvari postanu teške.</p></div>
+</div>
+<div class="get-item">
+<div><h4>Vaš lični PDF plan za odnos</h4><p>Uređen dokument koji beleži vaše obrasce, potrebe i naredne korake — ostaje vama i nakon završetka programa.</p></div>
+</div>
+<div class="get-item">
+<div><h4>Kouč obučen za dinamiku odnosa</h4><p>Psihologija, porodično savetovanje i life coaching — ne samo empatija, već razumevanje zasnovano na dokazima o tome zašto odnosi zapnu i kako mogu da se promene.</p></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="pricing-section" id="pricing">
+<div class="wrap">
+<div class="pricing-header fi">
+<span class="s-label" style="justify-content:center">Investicija</span>
+<h2 class="s-title">Tri načina da radimo zajedno</h2>
+<p class="s-body" style="max-width:440px;margin:0 auto">Svaki paket uključuje kompletan šestonedeljni program. Razlika je u nivou podrške koji dobijate oko njega.</p>
+</div>
+<div class="pricing-grid fi">
+<div class="pricing-card">
+<span class="pricing-tier">Foundation</span>
+<div class="pricing-price"><span>$</span>497</div>
+<div class="pricing-period">one-time · 6-week programme</div>
+<ul class="pricing-features">
+<li>6 × 60-minutnih 1-na-1 sesija</li>
+<li>Personalizovane vežbe za refleksiju</li>
+<li>Završni lični PDF plan</li>
+</ul>
+<a class="btn-outline-blue" href="https://calendly.com/coachingshethrives" rel="noopener noreferrer" target="_blank">Zakažite uvodni razgovor</a>
+</div>
+<div class="pricing-card featured">
+<div class="featured-badge">Most popular</div>
+<span class="pricing-tier">Engine</span>
+<div class="pricing-price"><span>$</span>797</div>
+<div class="pricing-period">one-time · 6-week programme</div>
+<ul class="pricing-features">
+<li>Sve iz paketa Foundation</li>
+<li>Provere putem glasovnih poruka između sesija</li>
+<li>Podrška i odgovornost tokom nedelje</li>
+<li>Prioritetno zakazivanje — prvi pristup novim terminima kako se otvaraju, tako da ne čekate na slobodan termin</li>
+</ul>
+<a class="btn-red" href="https://calendly.com/coachingshethrives" rel="noopener noreferrer" target="_blank">Zakažite razgovor →</a>
+</div>
+<div class="pricing-card">
+<span class="pricing-tier">Operator</span>
+<div class="pricing-price"><span>$</span>1,197</div>
+<div class="pricing-period">one-time · 6-week programme</div>
+<ul class="pricing-features">
+<li>Sve iz paketa Engine</li>
+<li>2 bonus sesije (iskoristite ih kad god želite)</li>
+</ul>
+<a class="btn-outline-blue" href="https://calendly.com/coachingshethrives" rel="noopener noreferrer" target="_blank">Zakažite uvodni razgovor</a>
+</div>
+</div>
+</div>
+</section>
+<section class="about-section">
+<div class="wrap">
+<div class="about-inner">
+<div class="fi">
+<span class="s-label">O vašem kouču</span>
+<h2 class="s-title">Zdravo, ja sam <em>Mariana.</em></h2>
+<p class="s-body" style="margin-bottom:14px">Odnosi su mesto na kojem smo najviše svoji — i najranjiviji. Znam koliko je hrabrosti potrebno priznati da nešto ne funkcioniše i koliko je usamljeno nositi to sami.</p>
+<p class="s-body">Moje obrazovanje iz psihologije, porodičnog savetovanja i life coachinga daje mi alate da razumem ne samo ono što se dešava na površini odnosa, već i ono što ga pokreće u dubini. Zajedno stvaramo prostor koji je iskren, siguran i u potpunosti usmeren na ono što je vama potrebno.</p>
+<p class="s-body">Radim sa malim brojem klijentkinja istovremeno kako bi svaka žena koju podržavam dobila moju punu pažnju i posvećenost.</p>
+<div class="creds-list">
+<div class="cred-item"><div class="cred-dot"></div>BA in Psychology</div>
+<div class="cred-item"><div class="cred-dot"></div>Certificate in Family Counselling</div>
+<div class="cred-item"><div class="cred-dot"></div>Certificate in Life Coaching</div>
+<div class="cred-item"><div class="cred-dot"></div>Experience working with women across cultures &amp; life stages</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="cta-section" id="book">
+<div class="wrap-narrow">
+<span class="s-label">Spremni da počnete?</span>
+<h2 class="s-title">Spremni da se drugačije osećate u svom braku?</h2>
+<p class="s-body">30 minuta. Samo vi i Mariana. Razgovaraćemo o tome šta se dešava, šta ste već pokušali i da li je ovaj program pravi izbor za vas — iskreno i bez pritiska.</p>
+<a class="btn-red-lg" href="https://calendly.com/coachingshethrives" rel="noopener noreferrer" target="_blank">Zakažite besplatan razgovor od 30 minuta</a>
+<p class="cta-note">Broj mesta je ograničen — radim sa malim brojem klijentkinja istovremeno.</p>
+</div>
+</section>
+<section class="section fi" id="coaching-scope"><div class="wrap"><p class="eyebrow">Jasan i privatan prostor za vaš sledeći korak</p><h2 class="s-title">Koučing uz jasnoću, poverljivost i pažnju</h2><p class="s-body">She Thrives koučing je privatna 1:1 usluga usmerena na samosvest, komunikaciju, obrasce u odnosu, granice i svesno delovanje. Koučing nije psihoterapija, partnerska terapija, medicinska pomoć niti krizna intervencija. Ako doživljavate nasilje, prinudu, pretnje ili neposrednu opasnost, obratite se odgovarajućoj stručnoj ili hitnoj službi.</p></div></section><section class="section fi" id="faq"><div class="wrap"><p class="eyebrow">Često postavljana pitanja</p><h2 class="s-title">Koučing za odnose i brak — česta pitanja</h2><div class="faq-grid"><details class="faq-item"><summary>Šta je koučing za odnose?</summary><p class="s-body">Koučing za odnose pomaže vam da razumete obrasce u odnosu, jasnije komunicirate, prepoznate svoje potrebe i granice i odlučite šta želite dalje.</p></details><details class="faq-item"><summary>Da li mogu da radim koučing ako moj suprug ne učestvuje?</summary><p class="s-body">Da. She Thrives je 1:1 program za žene. Fokus je na onome što vi možete da razumete, saopštite, promenite i izaberete.</p></details><details class="faq-item"><summary>Da li je koučing za odnose isto što i partnerska terapija?</summary><p class="s-body">Ne. Koučing i terapija su različite usluge. She Thrives se fokusira na koučing, refleksiju, komunikaciju, obrasce odnosa, granice i svesno delovanje.</p></details><details class="faq-item"><summary>Šta se dešava tokom šestonedeljnog programa?</summary><p class="s-body">Svaka nedelja se fokusira na drugi deo odnosa — od razumevanja obrazaca i komunikacije do konflikta, povezanosti, granica, vizije i završne mape odnosa.</p></details><details class="faq-item"><summary>Koliko program košta?</summary><p class="s-body">Foundation je $497, Engine je $797, a Operator je $1,197.</p></details><details class="faq-item"><summary>Da li se program odvija online?</summary><p class="s-body">Da. Sesije su privatne i održavaju se online.</p></details><details class="faq-item"><summary>Kako da znam koji plan je pravi za mene?</summary><p class="s-body">Besplatan 30-minutni clarity call služi da zajedno procenimo da li je program odgovarajući i koji nivo podrške vam najviše odgovara.</p></details></div></div></section><footer>
+<div class="wrap">
+<div class="footer-logo" style="font-family:var(--cinzel);font-size:22px;font-weight:600;letter-spacing:0.12em;color:rgba(255,255,255,0.92);margin-bottom:14px">She Thrives <span style="color:var(--gold)">Koučing</span></div>
+<p>Koučing za odnose i brak · Online, širom sveta · <a href="https://calendly.com/coachingshethrives" rel="noopener noreferrer" target="_blank">Zakažite razgovor</a></p>
+<p style="margin-top:8px">© 2026 She Thrives Coaching · Sva prava zadržana</p>
+</div>
+</footer>
+<script>
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('on')})},{threshold:0.1});
+document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

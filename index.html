@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+
+<html lang="en">
+<head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&amp;family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&amp;family=DM+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --white:#FFFFFF;
+  --off-white:#F7F9FC;
+  --blue:#1A3A6E;
+  --blue-deep:#112750;
+  --blue-mid:#2A5298;
+  --blue-pale:rgba(26,58,110,0.06);
+  --gold:#C9A23E;
+  --gold-dark:#A07C1E;
+  --gold-light:#E8C97A;
+  --gold-pale:rgba(201,162,62,0.12);
+  --red:#BF3028;
+  --red-dark:#982620;
+  --text:#0F1B2D;
+  --text-mid:#4E5F72;
+  --text-dim:#8A9BAB;
+  --border:#DDE4EE;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --cinzel:'Cinzel','Trajan Pro',Georgia,serif;
+  --sans:'DM Sans',system-ui,sans-serif;
+  --r:10px;--r-sm:6px;
+}
+html{scroll-behavior:smooth}
+body{background:var(--white);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased}
+
+/* ── LAYOUT ── */
+.wrap{max-width:1020px;margin:0 auto;padding:0 28px}
+.wrap-narrow{max-width:680px;margin:0 auto;padding:0 28px}
+
+/* ── ORNAMENT DIVIDER ── */
+.ornament{display:flex;align-items:center;justify-content:center;gap:0;margin:0;height:28px;overflow:hidden}
+.ornament::before,.ornament::after{content:'';flex:1;height:1px;background:var(--gold-light)}
+.ornament-diamond{width:8px;height:8px;background:var(--gold);transform:rotate(45deg);flex-shrink:0;margin:0 14px}
+
+/* ── NAV ── */
+nav{background:var(--white);border-bottom:1px solid var(--border);padding:0;position:sticky;top:0;z-index:100}
+.nav-band{background:var(--blue);height:4px}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:10px 0}
+.nav-logo{display:flex;align-items:center;gap:16px;text-decoration:none}
+.nav-logo svg{height:42px;width:auto;flex-shrink:0}
+.nav-logo-text{line-height:1.2}
+.nav-logo-name{font-family:var(--cinzel);font-size:28px;font-style:normal;font-weight:600;color:var(--blue);display:block;letter-spacing:0.08em;-webkit-font-smoothing:antialiased}
+.nav-logo-sub{font-family:var(--cinzel);font-size:11px;font-weight:500;letter-spacing:0.32em;text-transform:uppercase;color:var(--gold);display:block;margin-top:5px;-webkit-font-smoothing:antialiased}
+.btn-red{background:var(--red);color:#fff;font-family:var(--sans);font-size:14px;font-weight:500;padding:11px 24px;border-radius:4px;border:none;cursor:pointer;text-decoration:none;display:inline-block;transition:background 0.18s,transform 0.18s;letter-spacing:0.01em}
+.btn-red:hover{background:var(--red-dark);transform:translateY(-1px)}
+.btn-red-lg{background:var(--red);color:#fff;font-family:var(--sans);font-size:16px;font-weight:500;padding:15px 36px;border-radius:4px;border:none;cursor:pointer;text-decoration:none;display:inline-block;transition:background 0.18s,transform 0.18s,box-shadow 0.18s;letter-spacing:0.01em}
+.btn-red-lg:hover{background:var(--red-dark);transform:translateY(-1px);box-shadow:0 6px 20px rgba(191,48,40,0.3)}
+.btn-outline-gold{background:transparent;color:var(--gold-light);font-family:var(--sans);font-size:15px;font-weight:500;padding:13px 32px;border-radius:4px;border:1.5px solid var(--gold);cursor:pointer;text-decoration:none;display:inline-block;transition:all 0.18s;letter-spacing:0.01em}
+.btn-outline-gold:hover{background:var(--gold-pale);border-color:var(--gold-light)}
+.btn-outline-blue{background:transparent;color:var(--blue);font-family:var(--sans);font-size:14px;font-weight:500;padding:11px 22px;border-radius:4px;border:1.5px solid var(--blue);cursor:pointer;text-decoration:none;display:inline-block;transition:all 0.18s}
+.btn-outline-blue:hover{background:var(--blue-pale)}
+
+/* ── HERO ── */
+.hero{background:var(--white);padding:0 0 80px}
+.hero-banner{background:var(--blue);padding:56px 0 52px;position:relative;overflow:hidden}
+.hero-banner::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,rgba(201,162,62,0.04) 0px,rgba(201,162,62,0.04) 1px,transparent 1px,transparent 40px);pointer-events:none}
+.hero-banner::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);pointer-events:none}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--cinzel);font-size:10px;font-weight:400;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold-light);margin-bottom:24px}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';width:28px;height:1px;background:var(--gold)}
+.hero-banner h1{font-family:var(--serif);font-size:clamp(36px,5.5vw,68px);font-weight:300;line-height:1.1;color:#fff;margin-bottom:20px;max-width:720px}
+.hero-banner h1 em{font-style:italic;color:var(--gold-light)}
+.hero-banner .sub{font-size:17px;color:rgba(255,255,255,0.75);max-width:500px;line-height:1.7;font-weight:300;margin-bottom:36px}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.hero-note{font-size:13px;color:rgba(255,255,255,0.5);margin-top:16px}
+.hero-stats{background:var(--white);border-bottom:3px solid var(--gold);padding:0}
+.stats-inner{display:grid;grid-template-columns:repeat(3,1fr);border-left:1px solid var(--border)}
+.stat-block{padding:28px 32px;border-right:1px solid var(--border)}
+.stat-number{font-family:var(--serif);font-size:36px;font-weight:400;color:var(--blue);line-height:1;margin-bottom:4px}
+.stat-label{font-family:var(--cinzel);font-size:11px;color:var(--text-mid);font-weight:400;letter-spacing:0.06em}
+
+/* ── SECTION SHARED ── */
+section{padding:80px 0}
+.s-label{font-family:var(--cinzel);font-size:10px;font-weight:400;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.s-label::before{content:'';width:20px;height:1px;background:var(--gold)}
+.s-title{font-family:var(--serif);font-size:clamp(28px,4vw,46px);font-weight:400;line-height:1.18;color:var(--blue);margin-bottom:14px}
+.s-title em{font-style:italic;color:var(--gold-dark)}
+.s-body{font-size:16px;color:var(--text-mid);line-height:1.75;font-weight:300}
+
+/* ── PAIN — dark blue banner section ── */
+.pain-section{background:var(--blue);padding:80px 0;position:relative;overflow:hidden}
+.pain-section::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,rgba(201,162,62,0.03) 0px,rgba(201,162,62,0.03) 1px,transparent 1px,transparent 40px)}
+.pain-section .ornament::before,.pain-section .ornament::after{background:rgba(201,162,62,0.4)}
+.pain-header{text-align:center;margin-bottom:52px}
+.pain-section .s-label{color:var(--gold-light);justify-content:center}
+.pain-section .s-label::before{display:none}
+.pain-section .s-title{color:#fff}
+.pain-section .s-title em{color:var(--gold-light)}
+.pain-section .s-body{color:rgba(255,255,255,0.68);max-width:480px;margin:0 auto}
+.pain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.pain-card{background:rgba(255,255,255,0.06);border:1px solid rgba(201,162,62,0.25);border-radius:var(--r);padding:28px 24px;backdrop-filter:blur(4px)}
+.pain-card .pain-num{font-family:var(--cinzel);font-size:10px;font-style:normal;color:var(--gold);margin-bottom:12px;display:block;letter-spacing:0.2em;text-transform:uppercase}
+.pain-card h3{font-family:var(--serif);font-size:20px;font-weight:400;color:#fff;margin-bottom:10px;line-height:1.3}
+.pain-card p{font-size:14px;color:rgba(255,255,255,0.62);line-height:1.65;font-weight:300}
+.pain-footer-strip{background:var(--gold);padding:20px 0;text-align:center}
+.pain-footer-strip p{font-family:var(--serif);font-size:18px;font-style:italic;color:var(--blue-deep)}
+
+/* ── HOW IT WORKS ── */
+.works-section{background:var(--white)}
+.works-header{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;margin-bottom:56px}
+.weeks-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.week-card{border:1px solid var(--border);border-radius:var(--r);padding:24px;background:var(--white);transition:border-color 0.2s,box-shadow 0.2s}
+.week-card:hover{border-color:var(--gold-light);box-shadow:0 4px 20px rgba(201,162,62,0.1)}
+.week-card-num{font-family:var(--cinzel);font-size:10px;font-weight:400;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.week-card-num::after{content:'';flex:1;height:1px;background:var(--gold-light);opacity:0.5}
+.week-card h3{font-family:var(--serif);font-size:20px;font-weight:500;color:var(--blue);margin-bottom:6px;line-height:1.25}
+.week-card p{font-size:13px;color:var(--text-mid);line-height:1.6;font-weight:300}
+
+/* ── WHAT YOU GET ── */
+.gets-section{background:var(--off-white);border-top:3px solid var(--gold);border-bottom:1px solid var(--border)}
+.gets-inner{display:grid;grid-template-columns:1fr 1.4fr;gap:56px;align-items:start}
+.gets-grid{display:flex;flex-direction:column;gap:10px;margin-top:8px}
+.get-item{background:var(--white);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:0 var(--r-sm) var(--r-sm) 0;padding:16px 20px;display:flex;gap:14px;align-items:flex-start}
+.get-item h4{font-size:14px;font-weight:600;color:var(--blue);margin-bottom:2px}
+.get-item p{font-size:13px;color:var(--text-mid);line-height:1.55;font-weight:300}
+
+/* ── PRICING ── */
+.pricing-section{background:var(--white)}
+.pricing-header{text-align:center;margin-bottom:52px}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
+.pricing-card{padding:32px 28px;border-right:1px solid var(--border);background:var(--white)}
+.pricing-card:last-child{border-right:none}
+.pricing-card.featured{background:var(--blue);position:relative}
+.featured-badge{background:var(--gold);color:var(--blue-deep);font-family:var(--cinzel);font-size:9px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;padding:6px 16px;display:inline-block;margin-bottom:20px;border-radius:2px}
+.pricing-tier{font-family:var(--cinzel);font-size:10px;font-weight:400;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:block}
+.pricing-card.featured .pricing-tier{color:var(--gold-light)}
+.pricing-price{font-family:var(--serif);font-size:52px;font-weight:300;color:var(--blue);line-height:1;margin-bottom:4px}
+.pricing-card.featured .pricing-price{color:#fff}
+.pricing-price span{font-size:24px;vertical-align:super;font-size:20px;margin-right:2px}
+.pricing-period{font-size:13px;color:var(--text-dim);margin-bottom:20px;border-bottom:1px solid var(--border);padding-bottom:20px}
+.pricing-card.featured .pricing-period{color:rgba(255,255,255,0.5);border-color:rgba(255,255,255,0.15)}
+.pricing-features{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:28px}
+.pricing-features li{font-size:14px;color:var(--text-mid);display:flex;gap:10px;align-items:flex-start;font-weight:300;line-height:1.5}
+.pricing-card.featured .pricing-features li{color:rgba(255,255,255,0.72)}
+.pricing-features li::before{content:'';width:5px;height:5px;background:var(--gold);border-radius:50%;flex-shrink:0;margin-top:8px}
+.pricing-card .btn-red,.pricing-card .btn-red-lg{width:100%;text-align:center;display:block;padding:13px}
+.pricing-card .btn-outline-blue{width:100%;text-align:center;display:block}
+
+/* ── ABOUT ── */
+.about-section{background:var(--blue);padding:80px 0;position:relative;overflow:hidden}
+.about-section::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,rgba(201,162,62,0.03) 0px,rgba(201,162,62,0.03) 1px,transparent 1px,transparent 40px)}
+.about-inner{display:grid;grid-template-columns:1fr;gap:0;align-items:center;position:relative;z-index:1;max-width:680px}
+.about-portrait{border:2px solid var(--gold);border-radius:var(--r);aspect-ratio:4/5;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.05);position:relative;overflow:hidden}
+.about-portrait::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--gold)}
+.about-portrait p{font-family:var(--serif);font-style:italic;font-size:15px;color:rgba(255,255,255,0.4);text-align:center;padding:24px}
+.about-section .s-label{color:var(--gold-light)}
+.about-section .s-label::before{background:var(--gold)}
+.about-section .s-title{color:#fff}
+.about-section .s-title em{color:var(--gold-light)}
+.about-section .s-body{color:rgba(255,255,255,0.7);margin-bottom:16px}
+.creds-list{display:flex;flex-direction:column;gap:8px;margin-top:24px}
+.cred-item{background:rgba(255,255,255,0.07);border:1px solid rgba(201,162,62,0.25);border-radius:var(--r-sm);padding:11px 16px;font-size:14px;color:rgba(255,255,255,0.75);font-weight:300;display:flex;align-items:center;gap:10px}
+.cred-dot{width:6px;height:6px;background:var(--gold);border-radius:50%;flex-shrink:0}
+
+/* ── TESTIMONIAL ── */
+.testimonial-section{background:var(--off-white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:64px 0;text-align:center}
+.t-stars{display:flex;justify-content:center;gap:4px;margin-bottom:20px}
+.t-star{color:var(--gold);font-size:20px}
+.t-quote{font-family:var(--serif);font-size:clamp(20px,3vw,30px);font-style:italic;font-weight:300;color:var(--blue);line-height:1.5;max-width:640px;margin:0 auto 18px}
+.t-attr{font-size:13px;color:var(--text-dim);letter-spacing:0.05em}
+
+/* ── CTA BANNER ── */
+.cta-section{background:var(--blue);padding:80px 0;text-align:center;position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold)}
+.cta-section::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--gold)}
+.cta-section .s-label{color:var(--gold-light);justify-content:center}
+.cta-section .s-label::before{display:none}
+.cta-section .s-title{color:#fff;margin-bottom:12px}
+.cta-section .s-body{color:rgba(255,255,255,0.68);max-width:440px;margin:0 auto 40px}
+.cta-note{color:rgba(255,255,255,0.45);font-size:13px;margin-top:18px}
+
+/* ── FOOTER ── */
+footer{background:var(--blue-deep);border-top:3px solid var(--gold);padding:36px 0;text-align:center}
+footer p{font-size:13px;color:rgba(255,255,255,0.45);font-weight:300}
+footer a{color:var(--gold-light);text-decoration:none}
+.footer-logo{font-family:var(--serif);font-size:20px;font-style:italic;color:rgba(255,255,255,0.8);margin-bottom:12px}
+.footer-logo span{color:var(--gold)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:820px){
+  .pain-grid{grid-template-columns:1fr}
+  .pricing-grid{grid-template-columns:1fr;border-radius:var(--r)}
+  .pricing-card{border-right:none;border-bottom:1px solid var(--border)}
+  .pricing-card:last-child{border-bottom:none}
+  .gets-inner{grid-template-columns:1fr}
+  .about-inner{grid-template-columns:1fr}
+  .works-header{grid-template-columns:1fr}
+  .weeks-grid{grid-template-columns:1fr}
+  .stats-inner{grid-template-columns:1fr}
+  .stat-block{border-right:none;border-bottom:1px solid var(--border);padding:20px 24px}
+  section{padding:60px 0}
+}
+@media(max-width:480px){
+  .wrap,.wrap-narrow{padding:0 18px}
+  .hero-btns{flex-direction:column}
+  .btn-red-lg,.btn-outline-gold{width:100%;text-align:center}
+}
+
+/* ── FADE IN ── */
+@media(prefers-reduced-motion:no-preference){
+  .fi{opacity:0;transform:translateY(16px);transition:opacity 0.55s ease,transform 0.55s ease}
+  .fi.on{opacity:1;transform:none}
+}
+
+.lang-switcher{display:flex;align-items:center;gap:3px;margin-left:14px;border:1px solid var(--border);border-radius:999px;padding:3px;background:var(--white)}
+.lang-btn{border:0;background:transparent;color:var(--text-mid);font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.04em;padding:6px 9px;border-radius:999px;cursor:pointer;transition:all .18s}
+.lang-btn.active{background:var(--blue);color:#fff}.lang-btn:hover:not(.active){background:var(--blue-pale);color:var(--blue)}
+@media(max-width:480px){.nav-inner{gap:8px}.lang-switcher{margin-left:0}.lang-btn{padding:6px 7px}.nav-logo-text{display:none}.nav-logo img{height:52px!important}}
+</style>
+<style>.faq-grid{display:grid;gap:14px;max-width:900px;margin-top:28px}.faq-item{border:1px solid var(--border);border-radius:var(--r);padding:18px 22px;background:var(--white)}.faq-item summary{cursor:pointer;font-weight:600;color:var(--blue);font-size:1.05rem}.faq-item p{margin-top:12px}</style><title>Relationship &amp; Marriage Coaching for Women | She Thrives Coaching</title><meta content="1:1 relationship and marriage coaching for women who feel disconnected, unheard, or stuck in their marriage. A structured 6-week online programme focused on communication, connection, boundaries and clarity." name="description"/><meta content="Mariana — She Thrives Coaching" name="author"/><meta content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" name="robots"/><meta content="#1A3A6E" name="theme-color"/><link href="https://shethrivescoach.com/" rel="canonical"/><link href="https://shethrivescoach.com/" hreflang="en" rel="alternate"/><link href="https://shethrivescoach.com/sr/" hreflang="sr" rel="alternate"/><link href="https://shethrivescoach.com/" hreflang="x-default" rel="alternate"/><link href="/assets/favicon.png" rel="icon" type="image/png"/><meta content="website" property="og:type"/><meta content="She Thrives Coaching" property="og:site_name"/><meta content="Relationship &amp; Marriage Coaching for Women | She Thrives Coaching" property="og:title"/><meta content="1:1 relationship and marriage coaching for women who feel disconnected, unheard, or stuck in their marriage. A structured 6-week online programme focused on communication, connection, boundaries and clarity." property="og:description"/><meta content="https://shethrivescoach.com/" property="og:url"/><meta content="https://shethrivescoach.com/assets/og-image.jpg" property="og:image"/><meta content="en_GB" property="og:locale"/><meta content="sr_RS" property="og:locale:alternate"/><meta content="summary_large_image" name="twitter:card"/><meta content="Relationship &amp; Marriage Coaching for Women | She Thrives Coaching" name="twitter:title"/><meta content="1:1 relationship and marriage coaching for women who feel disconnected, unheard, or stuck in their marriage. A structured 6-week online programme focused on communication, connection, boundaries and clarity." name="twitter:description"/><meta content="https://shethrivescoach.com/assets/og-image.jpg" name="twitter:image"/><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://shethrivescoach.com/#organization",
+      "name": "She Thrives Coaching",
+      "url": "https://shethrivescoach.com/",
+      "description": "Online relationship and marriage coaching for women.",
+      "founder": {
+        "@id": "https://shethrivescoach.com/#mariana"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://shethrivescoach.com/#website",
+      "url": "https://shethrivescoach.com/",
+      "name": "She Thrives Coaching",
+      "inLanguage": "en",
+      "publisher": {
+        "@id": "https://shethrivescoach.com/#organization"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://shethrivescoach.com/#mariana",
+      "name": "Mariana",
+      "worksFor": {
+        "@id": "https://shethrivescoach.com/#organization"
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://shethrivescoach.com/#service",
+      "name": "Relationship & Marriage Coaching",
+      "serviceType": "Relationship and marriage coaching",
+      "provider": {
+        "@id": "https://shethrivescoach.com/#organization"
+      },
+      "areaServed": "Worldwide",
+      "url": "https://shethrivescoach.com/"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://shethrivescoach.com/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is relationship coaching?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Relationship coaching helps you understand relationship patterns, communicate more clearly, identify your needs and boundaries, and decide what you want to do next."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I do relationship coaching if my husband doesn't participate?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. She Thrives is a 1:1 programme for women. The work focuses on what you can understand, communicate, change and choose."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is relationship coaching the same as couples therapy?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Relationship coaching and therapy are different services. She Thrives focuses on coaching, reflection, communication, relationship patterns, boundaries and intentional action."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens during the six-week programme?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Each week focuses on a different part of the relationship journey, from understanding patterns and communication to conflict, connection, boundaries, vision and a final Relationship Roadmap."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does the programme cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Foundation is $497, Engine is $797 and Operator is $1,197."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is the programme online?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Sessions are private and conducted online."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I know which plan is right for me?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The free 30-minute clarity call is designed to help determine whether the programme is appropriate and which level of support best fits your needs."
+          }
+        }
+      ]
+    }
+  ]
+}</script><style>
+.section{padding:80px 0}.eyebrow{font-family:var(--cinzel);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:block}.section .s-title{margin-bottom:16px}.section .s-body{max-width:760px}.faq-grid{display:grid;gap:14px;max-width:900px;margin-top:28px}.faq-item{border:1px solid var(--border);border-radius:var(--r);padding:18px 22px;background:var(--white)}.faq-item summary{cursor:pointer;font-weight:600;color:var(--blue);font-size:1.05rem}.faq-item p{margin-top:12px}.lang-switcher{display:flex;align-items:center;gap:3px;margin-left:14px;border:1px solid var(--border);border-radius:999px;padding:3px;background:var(--white)}.lang-btn{border:0;background:transparent;color:var(--text-mid);font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.04em;padding:6px 9px;border-radius:999px;cursor:pointer;transition:all .18s;text-decoration:none}.lang-btn.active{background:var(--blue);color:#fff}.lang-btn:hover:not(.active){background:var(--blue-pale);color:var(--blue)}@media(max-width:480px){.lang-switcher{margin-left:0}.lang-btn{padding:6px 7px}}
+</style></head>
+<body>
+<nav>
+<div class="nav-band"></div>
+<div class="wrap">
+<div class="nav-inner">
+<a class="nav-logo" href="/">
+<img alt="She Thrives Coaching lotus" src="/assets/she-thrives-logo.png" style="height:100px;width:auto;display:block;image-rendering:-webkit-optimize-contrast;image-rendering:crisp-edges"/>
+<div class="nav-logo-text">
+<span class="nav-logo-name">She Thrives</span>
+<span class="nav-logo-sub">Coaching</span>
+</div>
+</a>
+<div aria-label="Language" class="lang-switcher" role="group"><a aria-label="Switch to English" class="lang-btn active" href="/" hreflang="en">EN</a><a aria-label="Switch to Serbian" class="lang-btn" href="/sr/" hreflang="sr">SR</a></div><a class="btn-red" href="https://calendly.com/coachingshethrives" rel="noopener noreferrer" target="_blank">Book a free clarity call</a>
+</div>
+</div>
+</nav>
+<section class="hero" style="padding:0 0 0">
+<div class="hero-banner">
+<div class="wrap">
+<div class="hero-eyebrow">Relationship &amp; Marriage Coaching</div>
+<h1>You deserve a marriage that actually feels like <em>home.</em></h1>
+<p class="sub">A 6-week 1:1 coaching programme for women who feel disconnected, unheard, or stuck in their marriage — and are ready for real, lasting change.</p>
+<div class="hero-btns">
+<a class="btn-red-lg" href="https://calendly.com/coachingshethrives" rel="noopener noreferrer" target="_blank">Book your free clarity call</a>
+<a class="btn-outline-gold" href="#program">See the program</a>
+</div>
+<p class="hero-note">30 minutes · No obligation · Completely free</p>
+</div>
+</div>
+<div style="background:var(--white);padding:0">
+<div class="ornament" style="background:var(--white)">
+<div class="ornament-diamond"></div>
+</div>
+</div>
+<div class="hero-stats">
+<div class="wrap">
+<div class="stats-inner">
+<div class="stat-block fi">
+<div class="stat-number">6</div>
+<div class="stat-label">Weeks to clarity &amp; a personal roadmap</div>
+</div>
+<div class="stat-block fi">
+<div class="stat-number">1:1</div>
+<div class="stat-label">Private sessions — just you, no group settings</div>
+</div>
+<div class="stat-block fi">
+<div class="stat-number">100%</div>
+<div class="stat-label">Online, confidential, and completely private</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="pain-section">
+<div class="wrap">
+<div class="pain-header fi">
+<span class="s-label">Does this sound familiar?</span>
+<h2 class="s-title">It's not that you stopped loving each other.<br/>It's that you stopped <em>feeling</em> it.</h2>
+<p class="s-body">You're not here because you've given up. You're here because you haven't — and you know something has to change.</p>
+</div>
+<div class="pain-grid">
+<div class="pain-card fi">
+<span class="pain-num">01 · Communication</span>
+<h3>"Every conversation ends the same way"</h3>
+<p>You start with a real issue and end up in the same argument you've had a hundred times. You're both exhausted by it — and nothing ever actually gets resolved.</p>
+</div>
+<div class="pain-card fi">
+<span class="pain-num">02 · Connection</span>
+<h3>"I feel invisible in my own marriage"</h3>
+<p>Your needs, your feelings, your point of view — they seem to disappear. You've started editing yourself just to keep the peace. Slowly, you've stopped recognising yourself.</p>
+</div>
+<div class="pain-card fi">
+<span class="pain-num">03 · Intimacy</span>
+<h3>"I'm lonely — even when we're together"</h3>
+<p>You share a home, maybe children, a life. But there's a quiet distance between you that never quite closes. You miss him, and you don't know how to reach him anymore.</p>
+</div>
+</div>
+</div>
+<div class="pain-footer-strip" style="margin-top:52px">
+<div class="wrap">
+<p>"You deserve to feel loved, heard, and truly partnered — not just in theory, but in your actual daily life."</p>
+</div>
+</div>
+</section>
+<section class="works-section" id="program">
+<div class="wrap">
+<div class="works-header">
+<div class="fi">
+<span class="s-label">The 6-week programme</span>
+<h2 class="s-title">Six weeks.<br/>Real tools.<br/>A marriage that feels like <em>partnership.</em></h2>
+</div>
+<div class="fi">
+<p class="s-body" style="margin-bottom:20px">Each week builds on the last. You'll leave every session with something concrete — not just insight, but a next step you can actually take.</p>
+<p class="s-body">Held on Google Meet or your preferred platform, one 60-minute session per week, at a time that works across your time zone.</p>
+</div>
+</div>
+<div class="weeks-grid">
+<div class="week-card fi">
+<div class="week-card-num">Week one</div>
+<h3>Who You Are in This Marriage</h3>
+<p>We start with you — your needs, your patterns, your unspoken expectations. Before we can change the dynamic, we need to understand what you're bringing to it.</p>
+</div>
+<div class="week-card fi">
+<div class="week-card-num">Week two</div>
+<h3>Finding Your Voice</h3>
+<p>What do you actually need in this relationship? We build the language to express it clearly, calmly, and without losing yourself in the process.</p>
+</div>
+<div class="week-card fi">
+<div class="week-card-num">Week three</div>
+<h3>What the Conflict Is Really About</h3>
+<p>Arguments are rarely about what they appear to be. We uncover the underlying needs, fears, and patterns driving your most painful dynamics.</p>
+</div>
+<div class="week-card fi">
+<div class="week-card-num">Week four</div>
+<h3>Rebuilding Connection &amp; Trust</h3>
+<p>Whether trust has been broken or quietly eroded, this week focuses on rebuilding genuine emotional intimacy — the kind that makes a marriage feel like real partnership.</p>
+</div>
+<div class="week-card fi">
+<div class="week-card-num">Week five</div>
+<h3>Your Voice, Your Boundaries, Your Vision</h3>
+<p>What do you actually want from this marriage? Not what you think you should want — what you genuinely need. We clarify it and give you the language to communicate it.</p>
+</div>
+<div class="week-card fi">
+<div class="week-card-num">Week six</div>
+<h3>Your Relationship Roadmap</h3>
+<p>Everything comes together — your patterns, your needs, your non-negotiables, and your next steps. A clear written guide for the relationship you want to build.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="gets-section">
+<div class="wrap">
+<div class="gets-inner">
+<div class="fi">
+<span class="s-label">What's included</span>
+<h2 class="s-title">Everything you need.<br/>Nothing you don't.</h2>
+<p class="s-body" style="margin-top:8px">Support is built into every layer of the programme — inside sessions and between them.</p>
+<div style="margin-top:32px">
+<a class="btn-red" href="https://calendly.com/coachingshethrives" rel="noopener noreferrer" target="_blank">Book your free clarity call</a>
+</div>
+</div>
+<div class="gets-grid fi">
+<div class="get-item">
+<div><h4>6 × 60-minute private coaching sessions</h4><p>Held on Google Meet or your preferred platform, one per week — fully confidential, at a time that suits you.</p></div>
+</div>
+<div class="get-item">
+<div><h4>Personalised reflection exercises</h4><p>Between-session prompts and journaling exercises tailored to your specific relationship dynamic and what came up in your session.</p></div>
+</div>
+<div class="get-item">
+<div><h4>Voice note check-ins between sessions</h4><p>You're not on your own between calls. Mid-week support so you don't lose momentum when things get hard.</p></div>
+</div>
+<div class="get-item">
+<div><h4>Your personal relationship roadmap PDF</h4><p>A polished document capturing your patterns, needs, and next steps — yours to keep and return to long after we finish.</p></div>
+</div>
+<div class="get-item">
+<div><h4>A coach trained in relationship dynamics</h4><p>Psychology, family counselling, and life coaching — not just empathy, but an evidence-informed understanding of why relationships get stuck and how they change.</p></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="pricing-section" id="pricing">
+<div class="wrap">
+<div class="pricing-header fi">
+<span class="s-label" style="justify-content:center"><span style="width:20px;height:1px;background:var(--gold);display:inline-block"></span> Investment <span style="width:20px;height:1px;background:var(--gold);display:inline-block"></span></span>
+<h2 class="s-title">Three ways to work together</h2>
+<p class="s-body" style="max-width:440px;margin:0 auto">Every tier gives you the full 6-week programme. The difference is the level of support around it.</p>
+</div>
+<div class="pricing-grid fi">
+<div class="pricing-card">
+<span class="pricing-tier">Foundation</span>
+<div class="pricing-price"><span>$</span>497</div>
+<div class="pricing-period">one-time · 6-week programme</div>
+<ul class="pricing-features">
+<li>6 × 60-minute 1:1 sessions</li>
+<li>Personalised reflection exercises</li>
+<li>Final personal roadmap PDF</li>
+</ul>
+<a class="btn-outline-blue" href="https://calendly.com/coachingshethrives" rel="noopener noreferrer" target="_blank">Book a clarity call</a>
+</div>
+<div class="pricing-card featured">
+<div class="featured-badge">Most popular</div>
+<span class="pricing-tier">Engine</span>
+<div class="pricing-price"><span>$</span>797</div>
+<div class="pricing-period">one-time · 6-week programme</div>
+<ul class="pricing-features">
+<li>Everything in Foundation</li>
+<li>Voice note check-ins between sessions</li>
+<li>Mid-week accountability support</li>
+<li>Priority scheduling — first access to new session slots as they open, so you're never waiting on availability</li>
+</ul>
+<a class="btn-red" href="https://calendly.com/coachingshethrives" rel="noopener noreferrer" target="_blank">Book your call →</a>
+</div>
+<div class="pricing-card">
+<span class="pricing-tier">Operator</span>
+<div class="pricing-price"><span>$</span>1,197</div>
+<div class="pricing-period">one-time · 6-week programme</div>
+<ul class="pricing-features">
+<li>Everything in Engine</li>
+<li>2 bonus sessions (use anytime)</li>
+</ul>
+<a class="btn-outline-blue" href="https://calendly.com/coachingshethrives" rel="noopener noreferrer" target="_blank">Book a clarity call</a>
+</div>
+</div>
+</div>
+</section>
+<section class="about-section">
+<div class="wrap">
+<div class="about-inner">
+<div class="fi">
+<span class="s-label">About your coach</span>
+<h2 class="s-title">Hi, I'm <em>Mariana.</em></h2>
+<p class="s-body" style="margin-bottom:14px">Relationships are where we are most ourselves — and most vulnerable. I know how much courage it takes to admit something isn't working, and how lonely it feels to carry that alone.</p>
+<p class="s-body">My background in psychology, family counselling, and life coaching gives me the tools to understand not just what's happening on the surface of a relationship, but what's driving it underneath. Together we create a space that is honest, safe, and entirely focused on what you need.</p>
+<p class="s-body">I work with a small number of clients at a time so that every woman I support receives my full attention and care.</p>
+<div class="creds-list">
+<div class="cred-item"><div class="cred-dot"></div>BA in Psychology</div>
+<div class="cred-item"><div class="cred-dot"></div>Certificate in Family Counselling</div>
+<div class="cred-item"><div class="cred-dot"></div>Certificate in Life Coaching</div>
+<div class="cred-item"><div class="cred-dot"></div>Experience working with women across cultures &amp; life stages</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="cta-section" id="book">
+<div class="wrap-narrow">
+<span class="s-label">Ready to begin?</span>
+<h2 class="s-title">Ready to feel differently<br/>about your marriage?</h2>
+<p class="s-body">30 minutes. Just you and Mariana. We'll talk about what's going on, what you've already tried, and whether this programme is the right fit — honestly, and with no pressure.</p>
+<a class="btn-red-lg" href="https://calendly.com/coachingshethrives" rel="noopener noreferrer" target="_blank">Book your free 30-minute call</a>
+<p class="cta-note">Spots are limited — I work with a small number of clients at a time.</p>
+</div>
+</section>
+<section class="section fi" id="coaching-scope"><div class="wrap"><p class="eyebrow">A clear, private space for your next step</p><h2 class="s-title">Coaching with clarity, confidentiality and care</h2><p class="s-body">She Thrives coaching is a private 1:1 coaching service focused on self-awareness, communication, relationship patterns, boundaries and intentional action. Coaching is not psychotherapy, couples therapy, medical care or crisis intervention. If you are experiencing abuse, coercive control, threats or immediate danger, seek appropriate professional or emergency support.</p></div></section><section class="section fi" id="faq"><div class="wrap"><p class="eyebrow">Frequently Asked Questions</p><h2 class="s-title">Relationship &amp; marriage coaching — common questions</h2><div class="faq-grid"><details class="faq-item"><summary>What is relationship coaching?</summary><p class="s-body">Relationship coaching helps you understand relationship patterns, communicate more clearly, identify your needs and boundaries, and decide what you want to do next.</p></details><details class="faq-item"><summary>Can I do relationship coaching if my husband doesn't participate?</summary><p class="s-body">Yes. She Thrives is a 1:1 programme for women. The work focuses on what you can understand, communicate, change and choose.</p></details><details class="faq-item"><summary>Is relationship coaching the same as couples therapy?</summary><p class="s-body">No. Relationship coaching and therapy are different services. She Thrives focuses on coaching, reflection, communication, relationship patterns, boundaries and intentional action.</p></details><details class="faq-item"><summary>What happens during the six-week programme?</summary><p class="s-body">Each week focuses on a different part of the relationship journey, from understanding patterns and communication to conflict, connection, boundaries, vision and a final Relationship Roadmap.</p></details><details class="faq-item"><summary>How much does the programme cost?</summary><p class="s-body">Foundation is $497, Engine is $797 and Operator is $1,197.</p></details><details class="faq-item"><summary>Is the programme online?</summary><p class="s-body">Yes. Sessions are private and conducted online.</p></details><details class="faq-item"><summary>How do I know which plan is right for me?</summary><p class="s-body">The free 30-minute clarity call is designed to help determine whether the programme is appropriate and which level of support best fits your needs.</p></details></div></div></section><footer>
+<div class="wrap">
+<div class="footer-logo" style="font-family:var(--cinzel);font-size:22px;font-weight:600;letter-spacing:0.12em;color:rgba(255,255,255,0.92);margin-bottom:14px">She Thrives <span style="color:var(--gold)">Coaching</span></div>
+<p>Relationship &amp; Marriage Coaching · Online, worldwide · <a href="https://calendly.com/coachingshethrives" rel="noopener noreferrer" target="_blank">Book a call</a></p>
+<p style="margin-top:8px">© 2026 She Thrives Coaching · All rights reserved</p>
+</div>
+</footer>
+<script>
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('on')})},{threshold:0.1});
+document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
